@@ -1,15 +1,32 @@
 /* Inizialize Lenis  */
+
 function handleResize() {
-		if (window.innerWidth >= 992) {
-			const lenis = new Lenis()
+			const lenis = new Lenis({
+                duration: 2.2,
+                //easing: (t) => (t === 1 ? 1 : 1 - Math.pow(2, -10 * t)), // https://easings.net
+                orientation: 'vertical',
+                smoothWheel: true,
+                smoothTouch: false,
+                touchMultiplier: 2,
+            })
+
+            window.lenis = lenis;
+
 			function raf(time) {
                 lenis.raf(time)
                 requestAnimationFrame(raf)
             }
 
             requestAnimationFrame(raf)
-		}
+
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    lenis.scrollTo(this.getAttribute('href'))
+                });
+            })
 	}
+
 
 window.addEventListener('resize', handleResize);
 window.addEventListener('load', handleResize);
@@ -47,6 +64,7 @@ function preloader(){
 }
 
 /* Page opening */
+
 function pageOpening(){
     window.addEventListener("load", () => {
         var el = document.querySelector('.apertura');
@@ -55,22 +73,31 @@ function pageOpening(){
 }
 
 /* Mouse icon */
-const links = document.querySelectorAll("a, button, input, #nav-trigger");
+
+let links;
+let cursor = document.getElementById("circle");
 
 function enter() {
-    let cursor = document.getElementById("circle");	
     cursor.classList.add("circle-active");
 }
 
 function leave() {
-    let cursor = document.getElementById("circle");	
     cursor.classList.remove("circle-active");
+}	
+
+function linksSelection(){
+    links = document.querySelectorAll("a, button, input, #nav-trigger");
+    links.forEach(link => {
+        link.addEventListener("mouseenter", enter);
+        link.addEventListener("mouseleave", leave);
+    });
 }
 
-links.forEach(link => {
-    link.addEventListener("mouseenter", enter);
-    link.addEventListener("mouseleave", leave);
-});
+linksSelection();
+
+
+
+
 
 document.addEventListener('DOMContentLoaded', () => {
     let mousePosX = 0,
@@ -187,34 +214,40 @@ barba.hooks.beforeEnter((data) => {
 /* Initialize barba */
 barba.use(barbaPrefetch);
 barba.init({
-		transitions: [
-            {
-                beforeOnce: () => preloader(),
-                once({next}) {
-                    animationEnter(next.container);
-                    pageOpening();
-                }
-            },
-            {
-                name: 'con-menu',
-                from:{
-                    custom: ({trigger}) => {
-                        return trigger.classList && trigger.classList.contains('nav-link');
-                    },
-                },
-                beforeLeave: () => toggleMenu(),
-                
-                leave: ({current}) => animationLeave(current.container),
-
-                enter({next}){
-                    animationEnter(next.container);
-                }
-            },
-            {
-                leave: ({current}) => animationLeave(current.container),
-                enter({next}){
-                    animationEnter(next.container);
-                }
+    transitions: [
+        {
+            beforeOnce: () => preloader(),
+            once({next}) {
+                animationEnter(next.container);
+                pageOpening();
             }
-		]
-	});
+        },
+        {
+            name: 'con-menu',
+            from:{
+                custom: ({trigger}) => {
+                    return trigger.classList && trigger.classList.contains('nav-link');
+                },
+            },
+            beforeLeave: () => toggleMenu(),
+            
+            leave: ({current}) => animationLeave(current.container),
+
+            enter({next}){
+                animationEnter(next.container);
+                handleResize();
+                leave();
+                linksSelection();
+            }
+        },
+        {
+            leave: ({current}) => animationLeave(current.container),
+            enter({next}){
+                animationEnter(next.container);
+                handleResize();
+                leave();
+                linksSelection();
+            }
+        }
+    ]
+});
