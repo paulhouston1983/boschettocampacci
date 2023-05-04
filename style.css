@@ -385,8 +385,9 @@ h1,
   -moz-text-fill-color: transparent;
 }
 
-@media (min-width: 992px) {
+@media (max-width: 992px) {
   .title {
+    margin-bottom: 6rem;
   }
 }
 .spaced {
@@ -1122,8 +1123,8 @@ h1,
 .logo-wrapper {
   top: 0;
   bottom: 0;
-  right: 0;
   left: 0;
+  right: 0;
   position: absolute;
 }
 
