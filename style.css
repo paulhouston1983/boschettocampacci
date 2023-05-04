@@ -387,7 +387,7 @@ h1,
 
 @media (max-width: 992px) {
   .title {
-    margin-bottom: 6rem;
+    margin-bottom: 3rem;
   }
 }
 .spaced {
@@ -1307,4 +1307,29 @@ footer > .grid-container {
 }
 .scroll .arrow-scroll .line.two {
   top: 0.5rem;
+}
+
+.custom-top {
+  margin-top: calc(50vh - 8rem);
+}
+
+@media (min-width: 576px) {
+  .custom-top {
+    margin-top: calc(50vh - 4rem);
+  }
+}
+@media (min-width: 768px) {
+  .custom-top {
+    margin-top: calc(50vh - 7rem);
+  }
+}
+@media (min-width: 1200px) {
+  .custom-top {
+    margin-top: calc(50vh - 9rem);
+  }
+}
+@media (min-width: 1400px) {
+  .custom-top {
+    margin-top: calc(50vh - 12rem);
+  }
 }
