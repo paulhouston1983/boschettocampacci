@@ -95,10 +95,6 @@ function linksSelection(){
 
 linksSelection();
 
-
-
-
-
 document.addEventListener('DOMContentLoaded', () => {
     let mousePosX = 0,
     mousePosY = 0,
@@ -197,8 +193,11 @@ const animationLeave = (container) => {
 }
 
 /* Before eneter hook */
-barba.hooks.beforeEnter((data) => {
-    window.scrollTo(0, 0);
+barba.hooks.beforeEnter(() => {
+    //window.scrollTo(0, 0);
+    lenis.scrollTo(0, {
+        'duration': 0
+    })
     document.getElementById('script').remove();
     document.getElementById('pgia').remove();
 	let pgia = document.createElement('script');
