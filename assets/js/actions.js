@@ -3,7 +3,7 @@
 function handleResize() {
 			const lenis = new Lenis({
                 duration: 2.2,
-                //easing: (t) => (t === 1 ? 1 : 1 - Math.pow(2, -10 * t)), // https://easings.net
+                easing: (t) => (t === 1 ? 1 : 1 - Math.pow(2, -10 * t)), // https://easings.net
                 orientation: 'vertical',
                 smoothWheel: true,
                 smoothTouch: false,
