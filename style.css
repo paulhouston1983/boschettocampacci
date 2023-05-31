@@ -1118,6 +1118,7 @@ h1,
 .opening .title {
   z-index: 11;
   word-break: normal;
+  bottom:-3rem;
 }
 
 .logo-wrapper {
@@ -1281,7 +1282,7 @@ footer > .grid-container {
 }
 @media (min-width: 1280px) {
   .scroll.homescroll {
-    bottom: 6rem;
+    bottom: -3rem;
   }
 }
 @media (min-width: 992px) {
