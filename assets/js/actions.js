@@ -99,7 +99,10 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 /* Menu toggle */
-document.getElementById("nav-trigger").addEventListener("click", toggleMenu);
+let trigger = document.getElementById("nav-trigger");
+if (trigger){
+    trigger.addEventListener("click", toggleMenu);
+}
 
 function toggleMenu() {
     let hamburger = document.getElementById("main-nav");
@@ -176,9 +179,9 @@ barba.hooks.beforeEnter((data) => {
     document.getElementById('pgia').remove();
 	let pgia = document.createElement('script');
     let script = document.createElement('script');
-    pgia.src = "pgia/lib/pgia.js";
+    pgia.src = "../pgia/lib/pgia.js";
     pgia.id = "pgia";
-    script.src = "horizontal.js";
+    script.src = "../anime.js";
     script.id = "script";
     document.body.appendChild(pgia);
     document.body.appendChild(script);
