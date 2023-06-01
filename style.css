@@ -37,18 +37,10 @@
   --font-family-serif: "Cinzel", serif;
 }
 
-<<<<<<< Updated upstream
-html,
-=======
->>>>>>> Stashed changes
 html.lenis.lenis-smooth {
   scroll-behavior: auto !important;
 }
 
-<<<<<<< Updated upstream
-html,
-=======
->>>>>>> Stashed changes
 html.lenis {
   height: auto;
 }
@@ -393,14 +385,9 @@ h1,
   -moz-text-fill-color: transparent;
 }
 
-<<<<<<< Updated upstream
-@media (min-width: 992px) {
-  .title {
-=======
 @media (max-width: 992px) {
   .title {
     margin-bottom: 3rem;
->>>>>>> Stashed changes
   }
 }
 .spaced {
@@ -1135,18 +1122,11 @@ h1,
 
 .logo-wrapper {
   top: 0;
-<<<<<<< Updated upstream
-  bottom: 0;
-  right: 0;
-  left: 0;
-  position: absolute;
-=======
   /* bottom: 0 */
   left: 0;
   /* right: 0 */
   position: absolute;
   width: 100%;
->>>>>>> Stashed changes
 }
 
 .transition {
@@ -1273,8 +1253,6 @@ footer > .grid-container {
   #translate {
     width: 75px;
   }
-<<<<<<< Updated upstream
-=======
 }
 .scroll {
   text-transform: uppercase;
@@ -1355,5 +1333,4 @@ footer > .grid-container {
   .custom-top {
     margin-top: calc(50vh - 12rem);
   }
->>>>>>> Stashed changes
 }
